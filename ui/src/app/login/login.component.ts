@@ -6,7 +6,7 @@ import * as userActions from '../app-state/actions';
 import * as fromRoot from '../app-state';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-
+import * as pocActions from '../app-state/actions';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -23,6 +23,12 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.router.navigate(['/dashboard']);
       }
     });
+    this.store.select(fromRoot.getPocs).pipe(
+      takeUntil(this.destroy$)
+    ).subscribe(data => {
+      console.log('data::::', data);
+    });
+
   }
 
   model: User = new User();
@@ -39,6 +45,11 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
     this.destroy$.next(true);
     this.destroy$.unsubscribe();
+}
+
+test(){
+  this.store.dispatch(pocActions.getPocs());
+
 }
 
 }

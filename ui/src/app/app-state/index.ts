@@ -9,15 +9,20 @@ import { localStorageSync } from 'ngrx-store-localstorage';
 import { environment } from '../../environments/environment';
 import * as fromUser from './reducers/user.reducer';
 import * as fromTodo from './reducers/todo.reducer';
+import * as fromPoc from './reducers/poc.reducer';
 
 export interface State {
   user: fromUser.State;
   todo: fromTodo.State;
+  poc:fromPoc.State;
+
 }
 
 export const reducers: ActionReducerMap<State> = {
   user: fromUser.reducer,
   todo: fromTodo.reducer,
+  poc:fromPoc.reducer
+
 };
 
 const reducerKeys = ['user', 'todo'];
@@ -63,4 +68,10 @@ export const geTodoState = createFeatureSelector<fromTodo.State>('todo');
 export const getTasks = createSelector(
   geTodoState,
   fromTodo.getTasks
+);
+// Poc 
+export const getPocState = createFeatureSelector<fromPoc.State>('poc');
+export const getPocs = createSelector(
+  getPocState,
+  fromPoc.getPocs
 );

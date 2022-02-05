@@ -15,7 +15,7 @@ import { AppComponent } from './app.component';
 // ngrx related imports
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './app-state';
-import { UserEffects, TodoEffects } from './app-state/effects';
+import { UserEffects, TodoEffects, PocEffects } from './app-state/effects';
 import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
@@ -36,7 +36,7 @@ import { EffectsModule } from '@ngrx/effects';
     StoreModule.forRoot(reducers, {
       metaReducers
     }),
-    EffectsModule.forRoot([UserEffects, TodoEffects])
+    EffectsModule.forRoot([UserEffects, TodoEffects,PocEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

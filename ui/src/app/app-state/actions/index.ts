@@ -18,3 +18,4 @@ export {
   EDIT_TASK,
   editTaskSuccess,
   editTaskFailure } from './todo.actions';
+  export {GET_POC,getPocs,getPocSuccess,getPocFailure}from './poc.actions';

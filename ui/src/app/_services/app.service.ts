@@ -47,4 +47,8 @@ export class AppService {
       })
    );
   }
+  getPoc(){
+    return of({data:['123','456'],status:'SUCCESS'})
+  }
 }
+
